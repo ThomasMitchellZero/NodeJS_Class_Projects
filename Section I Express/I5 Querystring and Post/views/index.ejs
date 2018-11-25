@@ -1,0 +1,59 @@
+<html>
+    <head>
+
+            <!-- I'm not sure why this works.  The style.css file
+            is in the /public folder, not a folder called /assets 
+            so I don't know how this link gets there. Doing
+            it this way because that is what is shown in the class. -->
+            <link href="/assets/style.css" type="text/css" 
+            rel="stylesheet"/>
+            <!-- getting access to the jquery library -->
+            <script src="https://code.jquery.com/jquery-1.11.3.min.js" ></script>
+    </head>
+    <body>
+        Hello Nerds!!
+        <!-- So here's how this works.  This form method is set to POST
+        which means that this request will be handled by app.post instead
+        of app.get.
+    
+        Another important detail.  name is only for forms.  It corresponds
+        with a specific form element and is used to identify
+        what is being sent back to the server.  id identifies a particular
+        HTML element and has no server-side implications.  If we changed
+        the ID to something different but left the name alone, the code 
+        would work just fine.  I assume it's just easiest for name and id 
+        to be the same thing because they don't interact. -->
+
+        <form method="POST" action="/person">
+            First Name: <input type="text" id="firstname" 
+            name="firstname"/><br/>
+
+            Last Name: <input type="text" id="lastname" 
+            name="lastname"/><br/>
+
+            <input type="submit" value="submit" />
+        </form>
+
+        <script>
+                /* Not sure of all the ins and outs of this bit, but it
+                seems to be building a POST request.  So when the user
+                types in the URL, that is a GET request which then loads
+                this page.  Then, when the user hits Submit, this script
+                takes the contents of the firstname and lastname fields
+                and sends a POST request with the the contents of those
+                fields as a JSON object in the body of the POST request. 
+                
+                I think the .ajax bit is some simpler way of building the
+                POST request.*/
+
+                $.ajax({
+                    type: "POST",
+                    url: "/personjson",
+                    data: JSON.stringify({ firstname: 'Jane', lastname: 'Doe' }),
+                    dataType: 'json',
+                    contentType: 'application/json'
+                });
+        </script>
+    </body>
+
+</html>

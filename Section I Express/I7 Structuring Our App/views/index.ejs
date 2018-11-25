@@ -1,0 +1,29 @@
+<html>
+    <head>
+
+            <!-- I'm not sure why this works.  The style.css file
+            is in the /public folder, not a folder called /assets 
+            so I don't know how this link gets there. Doing
+            it this way because that is what is shown in the class. -->
+            <link href="/assets/style.css" type="text/css" 
+            rel="stylesheet"/>
+            <!-- getting access to the jquery library -->
+            <script src="https://code.jquery.com/jquery-1.11.3.min.js" ></script>
+    </head>
+    <body>
+        <h1>Hello Nerds!!</h1>
+
+
+        <form method="POST" action="/person">
+            First Name: <input type="text" id="firstname" 
+            name="firstname"/><br/>
+
+            Last Name: <input type="text" id="lastname" 
+            name="lastname"/><br/>
+
+            <input type="submit" value="submit" />
+        </form>
+
+    </body>
+
+</html>
